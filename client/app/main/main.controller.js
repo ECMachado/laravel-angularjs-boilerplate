@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('laravelAngularBoilerplateApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http, $rootScope) {
     $scope.awesomeThings = [];
-
-	$http.get('http://localhost:8000/api/things').success(function(awesomeThings) {
+	$http.get($rootScope.apiUrl + '/api/things').success(function(awesomeThings) {
 		$scope.awesomeThings = awesomeThings;
+		console.log(awesomeThings);
 	});
 
   });

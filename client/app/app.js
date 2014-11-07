@@ -12,4 +12,9 @@ angular.module('laravelAngularBoilerplateApp', [
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
+  })
+  .run(function ($rootScope) {
+
+    // Constants
+    $rootScope.apiUrl = 'http://localhost:8000';
   });
