@@ -1,0 +1,17 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+	<form class="form-signin" role="form">
+		<fieldset ng-disabled="isDisabled">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<input ng-model="credentials.email" type="email" class="form-control" placeholder="Email address" required="" autofocus="">
+			<input type="password" class="form-control" placeholder="Password" required="" ng-model="credentials.password">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" value="remember-me"> Remember me
+				</label>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="submit()">Sign in</button>
+		</fieldset>
+	</form>
+</div>

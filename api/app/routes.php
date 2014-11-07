@@ -18,7 +18,15 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('api/things', function()
-{
-	return Response::json('f-you???');
+Route::resource('api/things', 'UsersController');
+
+Route::post('api/authentication/login', function() {
+	if(Auth::attempt(array('email' => Input::json('email'), 'password' => Input::json('password'))))
+    {
+      return Response::json(array(Auth::user(), csrf_token()));
+    } 
+    else
+    {
+      return Response::json(array('flash' => 'Invalid username or password'), 500);
+    }
 });

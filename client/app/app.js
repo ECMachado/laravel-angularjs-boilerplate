@@ -17,4 +17,5 @@ angular.module('laravelAngularBoilerplateApp', [
 
     // Constants
     $rootScope.apiUrl = 'http://localhost:8000';
+
   });

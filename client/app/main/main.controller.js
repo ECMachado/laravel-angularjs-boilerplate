@@ -5,7 +5,7 @@ angular.module('laravelAngularBoilerplateApp')
     $scope.awesomeThings = [];
 	$http.get($rootScope.apiUrl + '/api/things').success(function(awesomeThings) {
 		$scope.awesomeThings = awesomeThings;
-		console.log(awesomeThings);
+		console.log(awesomeThings[0]);
 	});
 
   });
