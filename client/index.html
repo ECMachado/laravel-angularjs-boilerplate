@@ -40,6 +40,10 @@
       ga('send', 'pageview');
     </script>
 
+    <script>
+      var apiUrl = 'http://localhost:8000';
+    </script>
+
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
@@ -54,6 +58,7 @@
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/satellizer/satellizer.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
 
@@ -61,6 +66,7 @@
         <script src="app/app.js"></script>
           <!-- injector:js -->
           <script src="app/AuthenticationService/AuthenticationService.service.js"></script>
+          <script src="app/SessionService/SessionService.service.js"></script>
           <script src="app/login/login.controller.js"></script>
           <script src="app/login/login.js"></script>
           <script src="app/main/main.controller.js"></script>

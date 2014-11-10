@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('laravelAngularBoilerplateApp')
-  .controller('LoginCtrl', function ($scope, $rootScope, $http, $sanitize, $timeout) {
+  .controller('LoginCtrl', function ($scope, $rootScope, $http, $sanitize, $timeout, $location, $auth) {
     $scope.credentials = {
     	email: '',
     	password: ''
@@ -9,28 +9,20 @@ angular.module('laravelAngularBoilerplateApp')
 
     $scope.isDisabled = false;
 
+    $scope.flash = '';
+
 
     var sanitizeCredentials = function () {
     	return {
+            url: $rootScope.apiUrl+'/auth/login',
     		email: $sanitize($scope.credentials.email),
     		password: $sanitize($scope.credentials.password)
     	}
     };
 
     $scope.submit = function () {
+        $scope.flash = '';
     	$scope.isDisabled = true;
-    	$http.post($rootScope.apiUrl+'/api/authentication/login', sanitizeCredentials())
-    		.success(function (data) {
-    			console.log(data);
-				$scope.isDisabled = false;
-    			$scope.credentials = {
-			    	email: '',
-			    	password: ''
-			    };
-    		})
-    		.error(function (data) {
-    			console.log(data);
-    			$scope.isDisabled = false;
-    		});
+    	$auth.login(sanitizeCredentials());
     };
   });

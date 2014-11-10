@@ -5,7 +5,8 @@ angular.module('laravelAngularBoilerplateApp', [
   'ngResource',
   'ngSanitize',
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'satellizer'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider
@@ -13,9 +14,9 @@ angular.module('laravelAngularBoilerplateApp', [
 
     $locationProvider.html5Mode(true);
   })
-  .run(function ($rootScope) {
+  .run(function ($rootScope, $http) {
 
     // Constants
     $rootScope.apiUrl = 'http://localhost:8000';
-
+    //$rootScope.apiUrl = '';
   });

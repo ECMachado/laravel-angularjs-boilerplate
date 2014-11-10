@@ -12,21 +12,19 @@
 */
 
 header('Access-Control-Allow-Origin: http://localhost:9000');
+header('Access-Control-Allow-Headers: Authorization');
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('index');
 });
 
-Route::resource('api/things', 'UsersController');
-
-Route::post('api/authentication/login', function() {
-	if(Auth::attempt(array('email' => Input::json('email'), 'password' => Input::json('password'))))
-    {
-      return Response::json(array(Auth::user(), csrf_token()));
-    } 
-    else
-    {
-      return Response::json(array('flash' => 'Invalid username or password'), 500);
-    }
+Route::group(array('before' => 'auth'), function () {
+	Route::resource('api/things', 'UsersController');
 });
+
+Route::post('auth/login', 'AuthController@login');
+
+Route::get('/authTest', array('before' => 'auth', function () {
+  return Auth::user();
+}));

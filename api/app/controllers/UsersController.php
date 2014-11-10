@@ -11,7 +11,8 @@ class UsersController extends \BaseController {
 	public function index()
 	{
 		$users = User::all();
-		return Response::json(Auth::user());
+		//return Response::json(Auth::user());
+		return Response::json($users);
 	}
 
 	/**
