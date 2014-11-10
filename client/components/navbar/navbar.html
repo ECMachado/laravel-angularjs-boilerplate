@@ -14,8 +14,11 @@
         <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
             <a ng-href="{{item.link}}">{{item.title}}</a>
         </li>
-        <li ng-repeat="item in menu" ng-class="{active: isActive('/login')}">
-            <a ng-href="/login">Login</a>
+        <li ng-class="{active: isActive('/login')}">
+            <a ng-href="/login" ng-hide="auth.isAuthenticated()">Login</a>
+        </li>
+        <li ng-class="{active: isActive('/login')}">
+            <a href="" ng-click="auth.logout()" ng-show="auth.isAuthenticated()">Logout</a>
         </li>
       </ul>
     </div>
